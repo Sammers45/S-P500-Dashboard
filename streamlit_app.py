@@ -11,22 +11,26 @@ from statsmodels.tsa.arima.model import ARIMA
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from pandas.tseries.offsets import Day
 from snowflake.snowpark.context import get_active_session
+
 import plotly.io as pio
 
 pio.renderers.default = "svg"
 
+session = get_active_session()
 ## Get active session
-connection_parameters = {
-        "account": "oeldayc-xe11259",
-        "user": "PATESAMR",
-        "password": "Ashokbhanu0123@",
-        "role": "ACCOUNTADMIN",
-        "warehouse": "COMPUTE_WH",
-        "database": "sp500_data",
-        "schema": "finance"
-}
+#connection_parameters = {
+ #       "account": "oeldayc-xe11259",
+#        "user": "PATESAMR",
+#        "password": "************",
+#        "role": "ACCOUNTADMIN",
+#        "warehouse": "COMPUTE_WH",
+#        "database": "sp500_data",
+#        "schema": "finance"
+#}
 
-session = Session.builder.configs(connection_parameters).create()
+sf = st.secrets["snowflake"]
+
+#session = Session.builder.configs(connection_parameters).create()
 
 # Streamlit UI
 st.set_page_config(layout="wide")
