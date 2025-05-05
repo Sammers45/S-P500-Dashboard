@@ -1,0 +1,2 @@
+# don’t commit your Snowflake credentials
+.streamlit/secrets.toml
